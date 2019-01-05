@@ -3,7 +3,7 @@ import homeReducers from '../features/home/reducer.js';
 // const reducers = { a: 1 };
 // export const reducers = [{a:1}];
 
-console.log('homeReducers',homeReducers)
+// console.log('homeReducers',homeReducers)
 const apps = [
   ...homeReducers
 ]

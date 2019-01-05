@@ -1,0 +1,1 @@
+export { default as WriteArticle } from './WriteArticle/index.js';

@@ -5,7 +5,7 @@ import reducers from './reducers.js';
 import thunk from 'redux-thunk';
 // import staticReducer from './reducers';
 
-console.log('reducers',reducers)
+// console.log('reducers',reducers)
 // console.log('reducers typeof',typeof reducers)
 // const reducers = function(){
 // }
