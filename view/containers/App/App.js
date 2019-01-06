@@ -78,7 +78,7 @@ import {BaseInfo} from '../../features/baseInfo/index.js';
               <SignIn />
             </div>
           </Header>
-          <Content style={{ padding: '0 50px' }}>
+          <Content>
            <div className='content-box'>
 
            <div className='content-common content-main'>
