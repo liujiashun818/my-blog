@@ -11,7 +11,6 @@ export default class SearchApp extends React.Component {
     return (
         <Search
           placeholder="搜索博客"
-          enterButton="搜索"
           style={{ width: '34%' }}
           onSearch={value => console.log(value)}
         />

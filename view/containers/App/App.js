@@ -1,13 +1,18 @@
 import React from 'react';
+import { Switch, Route, Router, hashHistory } from 'react-router-dom';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 const { SubMenu } = Menu;
-const { Header, Content,Footer } = Layout;
+const { Header, Content,Footer,Sider } = Layout;
 import './App.less';
 import { Link } from 'react-router-dom';
 import { domaList } from '../../untils/domanList'; 
 import {SearchPage} from '../../features/search/index.js';
 import {WriteArticle} from '../../features/writeArticle/index.js';
 import {SignIn} from '../../features/signIn/index.js';
+import {IndexPage} from '../../features/indexPage/index.js';
+import {News} from '../../features/news/index.js';
+import {Topic} from '../../features/topic/index.js';
+import {BaseInfo} from '../../features/baseInfo/index.js';
 
 
  export default class App extends React.Component {
@@ -47,37 +52,51 @@ import {SignIn} from '../../features/signIn/index.js';
     render() {
         return(
           <Layout className="layout">
-          <Header>
+            <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
             <div className="header-left">
                 log
             </div>
             <Menu
               theme="dark"
               mode="horizontal"
-              defaultSelectedKeys={['2']}
+              defaultSelectedKeys={['1']}
               style={{ lineHeight: '64px', width: "50%", float: 'left' }}
             >
-              <Menu.Item key="1">首页</Menu.Item>
-              <Menu.Item key="2">动态</Menu.Item>
-              <Menu.Item key="3">话题</Menu.Item>
+              <Menu.Item key="1">
+                <Link to="/"><Icon type="home" />首页</Link>
+              </Menu.Item>
+              <Menu.Item key="2">
+                <Link to="/news"><Icon type="home" />动态</Link>
+              </Menu.Item>
+              <Menu.Item key="3">
+                <Link to="/topic"><Icon type="home" />话题</Link>
+              </Menu.Item>
             </Menu>
             <div className="header-right">
               <SearchPage />
               <WriteArticle/>
               <SignIn />
             </div>
-            
           </Header>
           <Content style={{ padding: '0 50px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              {/* <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item> */}
-            </Breadcrumb>
-            <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>Content</div>
+           <div className='content-box'>
+
+           <div className='content-common content-main'>
+              <Route exact path="/" component={IndexPage} />
+              <Route path="/news" component={News} />
+              <Route path="/topic" component={Topic} />
+            </div>
+            <div className='content-right'> 
+              <BaseInfo />
+              <BaseInfo />
+              <BaseInfo />
+            
+            </div>
+           </div>
+
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-            234567890
+       
           </Footer>
         </Layout>
         )
