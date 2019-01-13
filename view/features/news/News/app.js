@@ -14,7 +14,7 @@ export default class NewsApp extends React.Component {
   }
   render() {
     return (
-      <span className='news' onClick={()=>{alert('indexPage')}}>
+      <span className='news' onClick={()=>{alert('news')}}>
         新闻
       </span> 
     );
