@@ -4,7 +4,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const isProd = process.env.NODE_ENV === 'production';
-
 const lessDev = ['style-loader', 'css-loader',  {
   loader: 'postcss-loader',
   options: {

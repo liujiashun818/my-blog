@@ -14,6 +14,7 @@ import {News} from '../../features/news/index.js';
 import {Topic} from '../../features/topic/index.js';
 import {BaseInfo} from '../../features/baseInfo/index.js';
 
+import {Editor} from '../../features/editor/index.js';
 
  export default class App extends React.Component {
     constructor(props){
@@ -50,6 +51,7 @@ import {BaseInfo} from '../../features/baseInfo/index.js';
 
     }
     render() {
+        console.log(this.props.routeProps,'kkkkk')
         return(
           <Layout className="layout">
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
@@ -63,18 +65,18 @@ import {BaseInfo} from '../../features/baseInfo/index.js';
               style={{ lineHeight: '64px', width: "50%", float: 'left' }}
             >
               <Menu.Item key="1">
-                <Link to="/"><Icon type="home" />首页</Link>
+                <Link to='/'><Icon type="home" />首页</Link>
               </Menu.Item>
               <Menu.Item key="2">
-                <Link to="/news"><Icon type="home" />动态</Link>
+                <Link to='/news'><Icon type="home" />动态</Link>
               </Menu.Item>
               <Menu.Item key="3">
-                <Link to="/topic"><Icon type="home" />话题</Link>
+                <Link to='/topic'><Icon type="home" />话题</Link>
               </Menu.Item>
             </Menu>
             <div className="header-right">
               <SearchPage />
-              <WriteArticle/>
+                <WriteArticle />
               <SignIn />
             </div>
           </Header>
@@ -82,10 +84,14 @@ import {BaseInfo} from '../../features/baseInfo/index.js';
            <div className='content-box'>
 
            <div className='content-common content-main'>
-              <Route exact path="/" component={IndexPage} />
-              <Route path="/news" component={News} />
-              <Route path="/topic" component={Topic} />
-            </div>
+          
+            
+                  <Route path='/' component={IndexPage} exact />
+                  <Route path='/news' component={News} />
+                  <Route path='/topic' component={Topic} />
+                  <Route path="/editor" component={Editor}/>
+               
+            </div> 
             <div className='content-right'> 
               <BaseInfo />
               <BaseInfo />

@@ -4,6 +4,7 @@ import {AppContainer} from 'react-hot-loader';
 import Root from './root';
 import store from '../store/createStore';
 import routeConfig from '../store/routeConfig';
+import 'babel-polyfill';
 
 const MOUNT_NODE = document.getElementById('root');
 

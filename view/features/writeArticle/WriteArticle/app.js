@@ -1,9 +1,13 @@
 
 import React from 'react';
 import { Icon } from 'antd';
+import { Link } from 'react-router-dom';
 import './app.less';
 export default class WriteArticleApp extends React.Component {
-  
+  constructor(props){
+      super(props);
+  }
+  // }
   componentDidMount(){
     // let num = {
     //   username: "15801523928",	
@@ -12,10 +16,16 @@ export default class WriteArticleApp extends React.Component {
     // }
     // this.props.query(num);
   }
-  render() {
+  openEditorPage(){
+    // console.log(this.routerObj, 'oooo');
+    // let routerObj = this.props.routerObj;
+    // console.log('ddd',routerObj)
+    // routerObj.history.push('./editor');
+  }
+  render() { 
     return (
-      <span className='writeArticle' onClick={()=>{alert('edit')}}>
-        <Icon type="edit" />  写文章
+      <span className='writeArticle' onClick={this.openEditorPage.bind(this)}>
+        <Link to='/editor'><Icon type="edit" />写文章</Link>
       </span> 
     );
   }

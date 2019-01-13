@@ -1,10 +1,15 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import {Router, Switch, Route, BrowserRouter } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
-import App from '../containers/App/App'
-
+import App from '../containers/App/App';
+import {Editor} from '../features/editor/index.js';
+import {IndexPage} from '../features/indexPage/index.js';
+import {News} from '../features/news/index.js';
+import {Topic} from '../features/topic/index.js';
+import createHistory from 'history/createHashHistory';
+let history = createHistory();
 // function getRouteConfig(Container, routes, contextPath) {
 //     console.log('routesConfig',routes)
 //     const children = []; // children component list
@@ -47,11 +52,17 @@ export default class RootDev extends React.Component {
              <Provider store={this.props.store}> 
               <BrowserRouter
                   forceRefresh={false}
-                  keyLength={6}
+                  keyLength={6} 
              >
-                  <App />
-                  {/* {children} */}
-              </BrowserRouter>
+
+                <App/>
+                {/* <Switch>
+                     <Route path="/" exact  component={App}></Route>
+                     <Route path="/editor" component={Editor}/>
+                </Switch>
+               */}
+      
+              </BrowserRouter> 
             </Provider>   
         )
     }
