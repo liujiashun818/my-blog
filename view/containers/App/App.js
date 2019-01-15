@@ -76,7 +76,7 @@ import {Editor} from '../../features/editor/index.js';
             </Menu>
             <div className="header-right">
               <SearchPage />
-                <WriteArticle />
+              <WriteArticle/>
               <SignIn />
             </div>
           </Header>
@@ -84,12 +84,9 @@ import {Editor} from '../../features/editor/index.js';
            <div className='content-box'>
 
            <div className='content-common content-main'>
-          
-            
                   <Route path='/' component={IndexPage} exact />
                   <Route path='/news' component={News} />
                   <Route path='/topic' component={Topic} />
-                  <Route path="/editor" component={Editor}/>
                
             </div> 
             <div className='content-right'> 

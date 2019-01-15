@@ -51,17 +51,17 @@ export default class RootDev extends React.Component {
         return (
              <Provider store={this.props.store}> 
               <BrowserRouter
-                  forceRefresh={false}
-                  keyLength={6} 
+                //   forceRefresh={false}
+                //   keyLength={6} 
              >
-
-                <App/>
-                {/* <Switch>
-                     <Route path="/" exact  component={App}></Route>
-                     <Route path="/editor" component={Editor}/>
+                <Switch>
+                       
+                        <Route path="/editor" component={Editor} />
+                        <Route path="/" render={props => {
+                            return <App {...props} />}}
+                        />
                 </Switch>
-               */}
-      
+              
               </BrowserRouter> 
             </Provider>   
         )

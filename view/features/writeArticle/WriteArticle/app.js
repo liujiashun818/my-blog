@@ -1,32 +1,46 @@
 
-import React from 'react';
+
 import { Icon } from 'antd';
-import { Link } from 'react-router-dom';
 import './app.less';
-export default class WriteArticleApp extends React.Component {
-  constructor(props){
-      super(props);
-  }
-  // }
-  componentDidMount(){
-    // let num = {
-    //   username: "15801523928",	
-    //   password:"1234",
-    //   email:"12345@qq.com"
-    // }
-    // this.props.query(num);
-  }
-  openEditorPage(){
-    // console.log(this.routerObj, 'oooo');
-    // let routerObj = this.props.routerObj;
-    // console.log('ddd',routerObj)
-    // routerObj.history.push('./editor');
-  }
-  render() { 
-    return (
-      <span className='writeArticle' onClick={this.openEditorPage.bind(this)}>
-        <Link to='/editor'><Icon type="edit" />写文章</Link>
-      </span> 
-    );
-  }
+import React,{ Component} from 'react';
+
+import Topic from './topic/Topic';
+
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom';
+
+export default class WriteArticleApp extends Component{
+    render(){
+        return (
+            <div className='writeArticle' >
+            <Link to='/editor'> 写文章 </Link>
+                 
+                {/* <ul>
+                    <li>
+                        <Link to={`${this.props.match.url}/rendering`}>
+                            使用 React 渲染
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to={`${this.props.match.url}/components`}>
+                            组件
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to={`${this.props.match.url}/props-v-state`}>
+                            属性 v. 状态
+                        </Link>
+                    </li>
+                </ul>
+
+                <Route path={`${this.props.match.url}/:topicId`} component={Topic}/>
+                <Route exact path={this.props.match.url} render={() => (
+                    <h3>请选择一个主题。</h3>
+                )}/> */}
+            </div>
+        )
+    }
 }
