@@ -1,38 +1,41 @@
+@import '../../assets/common.less';
 
-  .header-left{
-    width: 15%;
-    height: 31px;
-    line-height: 31px;
-    background: rgba(255,255,255,.2);
-    margin: 16px 24px 16px 0;
-    float: left;
+  .ant-layout-header{
+    .header-public;
+  .header-box{
+    max-width: 1000px;
+    display: flex;
+    margin: 0 auto;
+    background: #7bee42;
+    .header-left{
+      min-width: 98px;
+    }
+    .header-right{
+      flex: 1 0 auto;
+      display: flex;
+      .header-nav{
+        flex: 4;
+        background: #7bee42
+      }
+    }
   }
-  .header-right{
-    width: 30%;
-    height: 31px;
-    line-height: 31px;
-    margin: 16px 0 16px 0;
-    float: right;
-  }
+}
   .ant-layout-content{
-    margin: 80px 0 0;
-    padding: 0 100px;
+    margin: 40px auto;
     .content-box{
       display: flex;
-      .content-common{
-        min-height: 500;
+      max-width: 1000px;
+      .content-common{  
+        width: 700px;
         background: white;
-      }
-      .content-main{
-        flex: 1;
       }
       .content-right{
         margin-left: 20px; 
-        width: 400px;
+        width: 300px;
         .ant-card{
           margin-bottom: 20px;
         }
       }
     }
- 
   }
+

@@ -11,6 +11,10 @@ const lessDev = ['style-loader', 'css-loader',  {
     config: {
       path: '.postcssrc.js',
     },
+    modifyVars: {
+      'primary-color': 'red',
+    },
+    javascriptEnabled: true,
   },
 }, 'less-loader'];
 const lessProd = ExtractTextPlugin.extract({
