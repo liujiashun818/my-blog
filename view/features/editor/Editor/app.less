@@ -2,38 +2,56 @@
 .editor-box{
   
     .editor-header{
+        background: white;
         .header-public;
         padding: 0 50px;
         display: flex;
         .header-left{
             flex: 1;
-            border-right:1px solid gray; 
             display: flex;
+       
             .log{
                 width: 80px;
+                text-align:  center;
             }
-            label{
-                font-size: 20px;
-                width: 80px;
-            }
+          
             .title{
                 line-height: 66px;
                 height: 66px;
-                background: #97f569;
                 font-size: 28px;
                 flex: 1;
+                border: none;
             }
         }
         .header-right{
             flex: 1;
             display: flex;
-                .h-r-children1{
-                   flex: 2;
+            justify-content: flex-end;
+           
+            font-size: 18px;
+            white-space: nowrap;   
+            .h-r-c{
+               margin:0 10px;
+
+             }
+             .auto-save{
+               color: #ddd;
+                 .ant-btn{
+                    // margin-left: 4px;
+                    width: 50px;
+                    padding: 0;
+                    span{
+                        color: #ddd;
+                    }
+                 }
+ 
+             }
+             .avatar{
+                .ant-badge-count{
+                    background: #25b864
                 }
-                .h-r-children{
-                    flex: 1;
-                    text-align: right;
-                }
+             }
+       
         }
     }
     .editor-middle{
@@ -44,12 +62,18 @@
         .editor-left{
             flex:1;
             margin-right: 20px;
+
             .editor {
-                textarea {
+                .textarea {
                     padding: 20px;
-                    height: 420px;
                     width: 100%;
+                    border: 0;
                   }
+            }
+            .text-box{
+                overflow: auto;
+                max-height: 420px;
+                border: 1px solid black;
             }
         }
         .editor-right{
@@ -58,11 +82,12 @@
             font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
             font-size: 16px;
             line-height: 1.5em;
-            overflow: auto; 
+      
             .result{
                 border: 1px solid gray;
                 max-height: 420px;
                 overflow: auto;
+                padding: 24px;
             }
         }
   

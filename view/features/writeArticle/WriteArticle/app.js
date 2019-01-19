@@ -16,7 +16,7 @@ export default class WriteArticleApp extends Component{
     render(){
         return (
             <div className='writeArticle' >
-            <Link to='/editor'> 写文章 </Link>
+              <Link to='/editor'> 写文章 </Link>
                  
                 {/* <ul>
                     <li>

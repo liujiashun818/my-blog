@@ -55,11 +55,11 @@ export default class RootDev extends React.Component {
                 //   keyLength={6} 
              >
                 <Switch>
-                       
-                        <Route path="/editor" component={Editor} />
-                        <Route path="/" render={props => {
+                        {/* <Route path="/editor" component={Editor} /> */}
+                        <Route path="/" component={Editor} />
+                        {/* <Route path="/" render={props => {
                             return <App {...props} />}}
-                        />
+                        /> */}
                 </Switch>
               
               </BrowserRouter> 

@@ -1,11 +1,14 @@
 
 import React from 'react';
-import { Layout, Menu, Avatar, Card, Input, Button,Dropdown,Icon } from 'antd';
+import { Layout, Menu,Collapse, Avatar,Badge, Card, Input, Button,Dropdown,Icon } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 import './app.less';
 import Editor from './components/editor';
+import Public from './components/public';
 import ReactMarkdown from 'react-markdown';
+import {ChangeEditor} from './components/changeEditor';
+
 const initialSource = `
 # Live demo
 
@@ -64,34 +67,42 @@ export default class EditorApp extends React.Component {
     this.handleMarkdownChange = this.handleMarkdownChange.bind(this)
     this.state = {
       markdownSrc: initialSource,
-      htmlMode: 'raw'
+      htmlMode: 'raw',
+      isShowRich: false,
     }
   }
 
   handleMarkdownChange(evt) {
     this.setState({markdownSrc: evt.target.value})
   }
-
+  changeEditorFun() {
+    console.log('kkkk')
+    this.setState({isShowRich: !this.state.isShowRich})
+  }
   render() {
     return (
       <Layout className="editor-box ">
         <Header className='editor-header'> 
           <div className='header-left'>
             <div className='log'>log</div>
-            <label>标题：</label><Input className='title' size="large" placeholder="请输入文章标题..." />
+             <Input className='title' size="large" placeholder="请输入文章标题..." />
           </div>
           <div className='header-right'>
-              <div className='h-r-children1'>文章自动保存到<Button>草稿</Button></div>
-              <div className='h-r-children'><Icon type="picture" /></div>
-              <div className='h-r-children'><Icon type="ellipsis" /></div>
-              <div className='h-r-children'> 
-                  <Dropdown overlay={menu}>
-                    <a className="ant-dropdown-link" href="#">
-                      发布<Icon type="down" />
-                    </a>
-                  </Dropdown>
+              <div className='h-r-c auto-save'>自动保存到  <Button>草稿</Button></div>
+              <div className='h-r-c'><Icon type="picture" /></div>
+              <div className='h-r-c'>
+                <ChangeEditor
+                   className='change-editor'
+                   onChange={this.changeEditorFun}
+                 />
+
               </div>
-              <div className='h-r-children'><Avatar>USER</Avatar></div>
+              <div className='h-r-c public'> 
+                  <Public className='public'/>
+              </div>
+              <div className='h-r-c avatar'>
+                <Badge count={1}><Avatar shape="circle" icon="user" /></Badge>
+               </div>
           </div>
         </Header >
         <Content className='editor-middle'>
