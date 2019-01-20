@@ -1,42 +1,27 @@
-@import '../../assets/common.less';
-
-  .ant-layout-header{
-    .header-public;
-    background:#97f569;
-  .header-box{
-    max-width: 1000px;
+  #root{
+    height: 100%;
+   .index-page{
     display: flex;
-    margin: 0 auto;
-    background: #7bee42;
-    .header-left{
-      min-width: 98px;
-    }
-    .header-right{
-      flex: 1 0 auto;
-      display: flex;
-      .header-nav{
-        flex: 4;
-        background: #7bee42
-      }
-    }
-  }
-}
-  .ant-layout-content{
-    margin: 40px auto;
-    .content-box{
-      display: flex;
-      max-width: 1000px;
-      .content-common{  
-        width: 700px;
-        background: white;
-      }
-      .content-right{
-        margin-left: 20px; 
-        width: 300px;
-        .ant-card{
-          margin-bottom: 20px;
+
+    .ant-layout-content{
+      margin: 80px auto;
+      flex: 1;
+      .content-box{
+        display: flex;
+        max-width: 1000px;
+        .content-common{  
+          width: 700px;
+          background: white;
+        }
+        .content-right{
+          margin-left: 20px; 
+          width: 300px;
+          .ant-card{
+            margin-bottom: 20px;
+          }
         }
       }
     }
-  }
+   }
 
+}

@@ -14,7 +14,7 @@ import {News} from '../../features/news/index.js';
 import {Topic} from '../../features/topic/index.js';
 import {BaseInfo} from '../../features/baseInfo/index.js';
 
-import {Editor} from '../../features/editor/index.js';
+import HeaderComponent from '../../components/header/index.js';
 
  export default class App extends React.Component {
     constructor(props){
@@ -52,41 +52,10 @@ import {Editor} from '../../features/editor/index.js';
     }
     render() {
         return(
-          <Layout className="layout">
-            <Header >
-              <div className='header-box'>
-
-                <div className="header-left">
-                    log
-                </div>
-                <div className="header-right">
-                  <Menu
-                    className="header-nav"
-                    theme="light"
-                    mode="horizontal"
-                    defaultSelectedKeys={['1']}
-                    style={{ lineHeight: '64px', width: "50%", float: 'left' }}
-                  >
-                    <Menu.Item key="1">
-                      <Link to='/'><Icon type="home" />首页</Link>
-                    </Menu.Item>
-                    <Menu.Item key="2">
-                      <Link to='/news'><Icon type="home" />动态</Link>
-                    </Menu.Item>
-                    <Menu.Item key="3">
-                      <Link to='/topic'><Icon type="home" />话题</Link>
-                    </Menu.Item>
-                  </Menu>
-            
-                  <SearchPage/>
-                  <WriteArticle/>
-                  <SignIn />
-                </div>
-            </div>
-          </Header>
+          <Layout className="layout index-page">
+            <HeaderComponent />
           <Content>
            <div className='content-box'>
-
            <div className='content-common content-main'>
                   <Route path='/' component={IndexPage} exact />
                   <Route path='/news' component={News} />

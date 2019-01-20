@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, Avatar, Icon } from 'antd';
+import {Link} from 'react-router-dom';
 const listData = [];
 
 export default class ListApp extends React.Component {
@@ -41,7 +42,7 @@ export default class ListApp extends React.Component {
               >
                 <List.Item.Meta
                   avatar={<Avatar src={item.avatar} />}
-                  title={<a href={item.href}>{item.title}</a>}
+                  title={<Link to={'./detail'} >{item.title}</Link>}
                 />
                 {item.content}
               </List.Item>

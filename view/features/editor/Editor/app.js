@@ -76,7 +76,7 @@ export default class EditorApp extends React.Component {
     this.setState({markdownSrc: evt.target.value})
   }
   changeEditorFun() {
-    console.log('kkkk')
+    console.log('是否切换富文本编辑器')
     this.setState({isShowRich: !this.state.isShowRich})
   }
   render() {
@@ -95,7 +95,6 @@ export default class EditorApp extends React.Component {
                    className='change-editor'
                    onChange={this.changeEditorFun}
                  />
-
               </div>
               <div className='h-r-c public'> 
                   <Public className='public'/>
@@ -117,7 +116,7 @@ export default class EditorApp extends React.Component {
             />
           </Card>
         </Content>
-        <Footer  className='editor-footer'> info</Footer >
+        <Footer className='editor-footer'> info</Footer >
       </Layout> 
     );
   }

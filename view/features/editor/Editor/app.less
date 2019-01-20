@@ -1,11 +1,14 @@
 @import '../../../assets/common.less';
 .editor-box{
-  
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
     .editor-header{
         background: white;
         .header-public;
         padding: 0 50px;
         display: flex;
+    
         .header-left{
             flex: 1;
             display: flex;
@@ -37,7 +40,6 @@
              .auto-save{
                color: #ddd;
                  .ant-btn{
-                    // margin-left: 4px;
                     width: 50px;
                     padding: 0;
                     span{
@@ -56,24 +58,30 @@
     }
     .editor-middle{
         display: flex;
-        max-height: 100%;
-        overflow: auto;
-        margin: 20px 50px;
+        flex:1;
+        padding: 20px 50px;
+        margin-top: 80px;
+        height: 100%;
         .editor-left{
             flex:1;
             margin-right: 20px;
-
-            .editor {
-                .textarea {
-                    padding: 20px;
-                    width: 100%;
-                    border: 0;
-                  }
-            }
-            .text-box{
-                overflow: auto;
-                max-height: 420px;
-                border: 1px solid black;
+            height: 100%;
+            .ant-card-body{
+                height: 100%;
+                .editor {
+                    height: 100%;
+                    .text-box{
+                        overflow: auto;
+                        max-height: 100%;
+                        border: 1px solid #ddd;
+                        .textarea {
+                            padding: 20px;
+                            width: 100%;
+                            border: 0;
+                          }
+                    }
+    
+                }
             }
         }
         .editor-right{
@@ -82,22 +90,22 @@
             font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
             font-size: 16px;
             line-height: 1.5em;
-      
-            .result{
-                border: 1px solid gray;
-                max-height: 420px;
-                overflow: auto;
-                padding: 24px;
+            .ant-card-body{
+                height: 100%;
+                .result{
+                    border: 1px solid #ddd;
+                    max-height: 100%;
+                    overflow: auto;
+                    padding: 24px;
+                }
             }
         }
   
     }
     .editor-footer{
         text-align: center;
-        background: blanchedalmond;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        background: white;
     }   
 }
