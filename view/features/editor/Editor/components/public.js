@@ -26,7 +26,7 @@ class Public extends Component {
         const{activeKey} = this.state;
         return(
                 <Collapse
-                 ref={(publicDom) => this.publicDom = publicDom}
+                  ref={(publicDom) => this.publicDom = publicDom}
                   className={this.props.className}
                   onChange={this.changePublic.bind(this)}
                   activeKey={activeKey}

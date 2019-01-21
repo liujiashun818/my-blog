@@ -9,6 +9,8 @@ import {SearchPage} from '../../features/search/index.js';
 import {WriteArticle} from '../../features/writeArticle/index.js';
 import {SignIn} from '../../features/signIn/index.js';
 import './index.less';
+import logo from '../../assets/img/logo.jpg';
+
  export default class HeaderComponent extends React.Component {
     constructor(props){
         super(props);
@@ -18,10 +20,10 @@ import './index.less';
     }
     render() {
         return(
-            <Header>
+            <div className='header-style'>
               <div className='header-box'>
                 <div className="header-left">
-                    log
+                    <img src={logo}/>
                 </div>
                 <div className="header-right">
                   <Menu
@@ -46,7 +48,7 @@ import './index.less';
                   <SignIn />
                 </div>
             </div>
-          </Header>
+          </div>
         )
     }
 }

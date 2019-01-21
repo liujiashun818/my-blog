@@ -1,12 +1,14 @@
-
-
-import { Icon } from 'antd';
-import './app.less';
 import React,{ Component} from 'react';
+import ReactMarkdown from 'react-markdown';
+import { Icon,Card,Layout,Avatar  } from 'antd';
+const { Header, Content,Footer,Sider } = Layout;
+const { Meta } = Card;
+import {initialSource} from '../../../untils/mock.js';
 
 import HeaderComponent from '../../../components/header/index.js';
-import Topic from './topic/Topic';
-
+import Topic from './topic/Topic'; 
+import BaseInfo from '../../baseInfo/BaseInfo'; 
+import './app.less';
 import {
     BrowserRouter as Router,
     Route,
@@ -14,36 +16,32 @@ import {
 } from 'react-router-dom';
 
 export default class DetailApp extends Component{
+    
     render(){
         return (
-            <div className='detail' >
-
-            <HeaderComponent/>
-              <Link to='/detail'> 详情 </Link>
-                 
-                {/* <ul>
-                    <li>
-                        <Link to={`${this.props.match.url}/rendering`}>
-                            使用 React 渲染
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to={`${this.props.match.url}/components`}>
-                            组件
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to={`${this.props.match.url}/props-v-state`}>
-                            属性 v. 状态
-                        </Link>
-                    </li>
-                </ul>
-
-                <Route path={`${this.props.match.url}/:topicId`} component={Topic}/>
-                <Route exact path={this.props.match.url} render={() => (
-                    <h3>请选择一个主题。</h3>
-                )}/> */}
+            <Layout className="layout index-page detail">
+            <HeaderComponent />
+          <Content>
+           <div className='content-box'>
+           <Card hoverable={true} className='content-common content-main'>
+           <Meta
+                avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                title="空荡荡的多多多"
+            />  
+                <ReactMarkdown
+                     className="result"
+                     source={initialSource}
+                />
+            </Card > 
+            <div className='content-right'> 
+              <BaseInfo />
+              <BaseInfo />
+              <BaseInfo />
+            
             </div>
+           </div>
+          </Content>
+        </Layout>
         )
     }
 }

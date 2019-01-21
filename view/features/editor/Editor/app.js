@@ -1,59 +1,15 @@
 
 import React from 'react';
 import { Layout, Menu,Collapse, Avatar,Badge, Card, Input, Button,Dropdown,Icon } from 'antd';
-
+import { Link } from 'react-router-dom';
 const { Header, Content, Footer } = Layout;
 import './app.less';
 import Editor from './components/editor';
 import Public from './components/public';
 import ReactMarkdown from 'react-markdown';
 import {ChangeEditor} from './components/changeEditor';
-
-const initialSource = `
-# Live demo
-
-Changes are automatically rendered as you type.
-
-* Implements [GitHub Flavored Markdown](https://github.github.com/gfm/)
-* Renders actual, "native" React DOM elements
-* Allows you to escape or skip HTML (try toggling the checkboxes above)
-* If you escape or skip the HTML, no \`dangerouslySetInnerHTML\` is used! Yay!
-
-## HTML block below
-
-<blockquote>
-  This blockquote will change based on the HTML settings above.
-</blockquote>
-
-## How about some code?
-\`\`\`js
-var React = require('react');
-var Markdown = require('react-markdown');
-
-React.render(
-  <Markdown source="# Your markdown here" />,
-  document.getElementById('content')
-);
-\`\`\`
-
-Pretty neat, eh?
-
-## Tables?
-
-| Feature   | Support |
-| --------- | ------- |
-| tables    | ✔ |
-| alignment | ✔ |
-| wewt      | ✔ |
-
-## More info?
-
-Read usage information and more on [GitHub](//github.com/rexxars/react-markdown)
-
----------------
-
-A component by [Espen Hovlandsdal](https://espen.codes/)
-`
+import logo from '../../../assets/img/logo.jpg';
+import {initialSource} from '../../../untils/mock.js';
 const menu = (
 <Menu>
   <Menu.Item> 33333 </Menu.Item>
@@ -84,7 +40,7 @@ export default class EditorApp extends React.Component {
       <Layout className="editor-box ">
         <Header className='editor-header'> 
           <div className='header-left'>
-            <div className='log'>log</div>
+            <div className='log'><Link to='./'><img src={logo}/></Link></div>
              <Input className='title' size="large" placeholder="请输入文章标题..." />
           </div>
           <div className='header-right'>
@@ -96,7 +52,7 @@ export default class EditorApp extends React.Component {
                    onChange={this.changeEditorFun}
                  />
               </div>
-              <div className='h-r-c public'> 
+              <div className='h-r-c'> 
                   <Public className='public'/>
               </div>
               <div className='h-r-c avatar'>

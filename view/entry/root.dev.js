@@ -12,6 +12,8 @@ import {News} from '../features/news/index.js';
 import {Topic} from '../features/topic/index.js';
 import createHistory from 'history/createHashHistory';
 let history = createHistory();
+
+import '../assets/theme.less';
 // function getRouteConfig(Container, routes, contextPath) {
 //     console.log('routesConfig',routes)
 //     const children = []; // children component list
@@ -53,8 +55,8 @@ export default class RootDev extends React.Component {
         return (
              <Provider store={this.props.store}> 
               <BrowserRouter
-                //   forceRefresh={false}
-                //   keyLength={6} 
+                  forceRefresh={false}
+                  keyLength={6} 
              >
                 <Switch>
                         <Route path="/editor" component={Editor} />

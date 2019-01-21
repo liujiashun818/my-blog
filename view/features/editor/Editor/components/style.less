@@ -2,63 +2,67 @@
     p {
         margin: 0;
    }
-   .ant-collapse .ant-collapse-item .ant-collapse-header .anticon {
-        left: initial;
-        right: 16px;
-   }
+    .ant-collapse-header{
+        .anticon {
+             right: 0;
+             user-select: none;
+        }
+   }   
 }
-.public{
-    border: 0;
-    .ant-collapse-item{
+.header-right{
+    .public{
         border: 0;
-        .ant-collapse-header{
-            width: 60px;
-            padding: 0;
-            background: white;
-            line-height: 66px;
+        .ant-collapse-item{
             border: 0;
-            color: #25b864;
-        }
-        .ant-collapse-content,
-        .ant-collapse-content-active{
-            width: 300px;
-            margin-left: -240px;
-            border: 1px solid gainsboro;
-        }
-        .ant-form{
-            .ant-form-item{
-                margin-bottom:10px; 
-                .ant-form-item-label{
-                    label{
-                        .from-title{
-                            font-size: 18px;
-                            font-weight: 600;
-                            color:#838ea0cc;
+            .ant-collapse-header{
+                width: 60px;
+                padding: 0;
+                background: white;
+                line-height: 66px;
+                border: 0;
+                color: #25b864;
+            }
+            .ant-collapse-content,
+            .ant-collapse-content-active{
+                width: 300px;
+                margin-left: -240px;
+                border: 1px solid gainsboro;
+            }
+            .ant-form{
+                .ant-form-item{
+                    margin-bottom:10px; 
+                    .ant-form-item-label{
+                        label{
+                            .from-title{
+                                font-size: 18px;
+                                font-weight: 600;
+                                color:#838ea0cc;
+                            }
                         }
                     }
-                }
-              .ant-form-item-children{
-                  #validate_other_classify{
-                       display: flex;
-                      flex-wrap: wrap;
-                      justify-content: space-between;
-                      .ant-radio-button-wrapper{
-                        margin-bottom: 4px;
-                        border-radius: 4px;
+                  .ant-form-item-children{
+                      #validate_other_classify{
+                           display: flex;
+                          flex-wrap: wrap;
+                          justify-content: space-between;
+                          .ant-radio-button-wrapper{
+                            margin-bottom: 4px;
+                            border-radius: 4px;
+                          }
+                        //   .ant-radio-button-wrapper-checked{
+                            // background: #25b864;
+                            // opacity: 0.5;
+                        //   }
                       }
-                    //   .ant-radio-button-wrapper-checked{
-                        // background: #25b864;
-                        // opacity: 0.5;
-                    //   }
                   }
-              }
+                }
             }
         }
+        .antd-left-taggle;
+
     }
-    .antd-left-taggle
-
-
 }
+
 .change-editor{
     .antd-left-taggle;
     line-height:52px;
