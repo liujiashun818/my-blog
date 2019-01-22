@@ -8,7 +8,7 @@ import Editor from './components/editor';
 import Public from './components/public';
 import ReactMarkdown from 'react-markdown';
 import {ChangeEditor} from './components/changeEditor';
-import logo from '../../../assets/img/logo.jpg';
+import logo from '../../../assets/img/logo.png';
 import {initialSource} from '../../../untils/mock.js';
 const menu = (
 <Menu>
@@ -40,11 +40,11 @@ export default class EditorApp extends React.Component {
       <Layout className="editor-box ">
         <Header className='editor-header'> 
           <div className='header-left'>
-            <div className='log'><Link to='./'><img src={logo}/></Link></div>
+            <div className='log'><Link to='./'><img src={logo}/><span>绿叶笔记</span></Link></div>
              <Input className='title' size="large" placeholder="请输入文章标题..." />
           </div>
           <div className='header-right'>
-              <div className='h-r-c auto-save'>自动保存到  <Button>草稿</Button></div>
+              <div className='h-r-c auto-save'>自动保存到&nbsp <Button>草稿</Button></div>
               <div className='h-r-c'><Icon type="picture" /></div>
               <div className='h-r-c'>
                 <ChangeEditor

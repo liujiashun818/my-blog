@@ -9,7 +9,7 @@ import {SearchPage} from '../../features/search/index.js';
 import {WriteArticle} from '../../features/writeArticle/index.js';
 import {SignIn} from '../../features/signIn/index.js';
 import './index.less';
-import logo from '../../assets/img/logo.jpg';
+import logo from '../../assets/img/logo.png';
 
  export default class HeaderComponent extends React.Component {
     constructor(props){
@@ -24,6 +24,7 @@ import logo from '../../assets/img/logo.jpg';
               <div className='header-box'>
                 <div className="header-left">
                     <img src={logo}/>
+                    <span>绿叶笔记</span>
                 </div>
                 <div className="header-right">
                   <Menu
@@ -37,10 +38,10 @@ import logo from '../../assets/img/logo.jpg';
                       <Link to='/'><Icon type="home" />首页</Link>
                     </Menu.Item>
                     <Menu.Item key="2">
-                      <Link to='/news'><Icon type="home" />动态</Link>
+                      <Link to='/news'><Icon type="codepen-circle" />动态</Link>
                     </Menu.Item>
                     <Menu.Item key="3">
-                      <Link to='/topic'><Icon type="home" />话题</Link>
+                      <Link to='/topic'><Icon type="message" />话题</Link>
                     </Menu.Item>
                   </Menu>
                   <SearchPage/>

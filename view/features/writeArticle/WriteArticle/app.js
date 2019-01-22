@@ -1,6 +1,6 @@
 
 
-import { Icon } from 'antd';
+import { Icon,Button } from 'antd';
 import './app.less';
 import React,{ Component} from 'react';
 
@@ -16,8 +16,9 @@ export default class WriteArticleApp extends Component{
     render(){
         return (
             <div className='writeArticle' >
-              <Link to='/editor'> 写文章 </Link>
-                 
+              <Link to='/editor'> 
+               <Button type="primary" icon="edit">写文章 </Button>
+               </Link>   
                 {/* <ul>
                     <li>
                         <Link to={`${this.props.match.url}/rendering`}>
