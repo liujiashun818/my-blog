@@ -98,11 +98,10 @@ module.exports = {
                 libraryName: 'antd',
                 style: 'css'
             }]
-        ]
+          ],
         },
         exclude: /node_modules/ 
       },
-      // { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
       {
         test: /\.html$/,
         use: [{

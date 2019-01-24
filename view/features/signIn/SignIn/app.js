@@ -11,6 +11,8 @@
 
 import React from 'react';
 import { Button, Modal } from 'antd';
+import Sigin from './component/signin';
+
 import './app.less';
 export default class SignApp extends React.Component {
   constructor(props){
@@ -21,18 +23,19 @@ export default class SignApp extends React.Component {
       confirmLoading: false,
     }
   }
-  register(type){
+  register = (type) => {
     console.log('type',type);
-    if(type === 'sign'){
-  
-    }else{
+    // if(type === 'sign'){
+    //   this.setState({title:type});
+    // }else{
 
-    }
+    // }
     this.setState({
+      title:type,
       visible: true,
     });
   }
-  handleOk(){
+  handleOk = () => {
     this.setState({
       ModalText: 'The modal will be closed after two seconds',
       confirmLoading: true,
@@ -44,33 +47,32 @@ export default class SignApp extends React.Component {
       });
     }, 2000);
   }
-  handleCancel(){ 
+  handleCancel = () => { 
     this.setState({
       visible: false,
     });
   }
   render() {
-    const { visible, confirmLoading, ModalText } = this.state;
+    const { visible,title, confirmLoading, ModalText } = this.state;
     return (
       <span className='signIn-box' >
-            <Button  className='sign' onClick={this.register.bind(this,'sign')}>
+            <Button  className='sign' onClick={this.register.bind(this,'登录')}>
               登录
             </Button>
             <Button type="primary" 
               className='register'
-              onClick={this.register.bind(this,'register')}
+              onClick={this.register.bind(this,'注册')}
             >
               注册
             </Button>
-        <Modal
-          title="Title"
-          visible={visible}
-          onOk={this.handleOk.bind(this)}
-          confirmLoading={confirmLoading}
-          onCancel={this.handleCancel.bind(this)}
-        >
-          <p>{ModalText}</p>
-        </Modal>
+            <Sigin
+              title={title}
+              visible={visible}
+              handleCancel={this.handleCancel}
+              submit={this.handleOk}
+              register={this.register}
+            />
+    
       </span>
     );
   }
