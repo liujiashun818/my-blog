@@ -1,10 +1,10 @@
 
 import React from 'react';
 import { connect } from  'react-redux';
-import { queryResult } from './actions.js';
+import { siginAction, regirstAction } from './actions.js';
 import reduxConfig from './store.js';
-import daoServer from '../../common/daoServe.js';
-import { queryUrl } from '../../interface.js';
+import {daoServerOfParamsObjOfPost, daoServer} from '../../common/daoServe.js';
+import { regirstUrl, signInUrl, queryArticlesUrl} from '../../interface.js';
 import { obj2Arr } from '../../common/tool.js';
 import app from './app.js';
 
@@ -22,8 +22,11 @@ const mapStateToProp = (state = {}, ownProps = {}) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   dispatchCopy = dispatch;
   return {
-    query: (queryObj) => {
-      query(queryObj)
+    userSigin: (useInfo) => {
+      daoServerOfParamsObjOfPost({url:signInUrl, dispatch:dispatchCopy, action:siginAction,route:'',queryCallback, data:useInfo})
+    },
+    userRegirst: (useInfo) => {
+      daoServerOfParamsObjOfPost({url:regirstUrl, dispatch:dispatchCopy, action:siginAction,route:'',queryCallback, data:useInfo})
     }
   }
 }
@@ -32,13 +35,6 @@ const SignIn = connect(
   mapDispatchToProps
 )(app)
 export default SignIn;
-
-const query = (requeryPrams) => {
-  let queryObj = obj2Arr(requeryPrams) || [];
-  const requestParams = queryObj.join('&') + '';
-  const url = queryUrl;
-  daoServer(url, dispatchCopy, queryResult, '', queryCallback)
-}
 const queryCallback = () => {
   alert('我是callback ')
 }

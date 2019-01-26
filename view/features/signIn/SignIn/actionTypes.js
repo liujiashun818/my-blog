@@ -1,1 +1,2 @@
-export const QUERY = 'homeQuery';
+export const REGIRSTACTION = 'REGIRSTACTION';
+export const SIGINACTION = 'SIGINACTION';

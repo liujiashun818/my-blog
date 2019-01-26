@@ -1,11 +1,15 @@
-import {QUERY} from './actionTypes.js';
-const reducer = (state = {'queryHome': ''}, action = {}) => {
+import {REGIRSTACTION,SIGINACTION} from './actionTypes.js';
+const reducer = (state = {'regirstRes': '', signInInfo: ''}, action = {}) => {
+  console.log('action',action);
   const myState = {...state};
   switch (action.type)  {
-    case QUERY:
-    myState.queryHome = action.info;
+    case REGIRSTACTION:
+      myState.regirstRes = action.info;
     return myState;
-    default:
+    case SIGINACTION:
+    myState.signInInfo = action.info;
+  return myState;
+     default:
     return state;
   }
 }

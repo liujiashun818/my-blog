@@ -35,17 +35,25 @@ export default class SignApp extends React.Component {
       visible: true,
     });
   }
-  handleOk = () => {
-    this.setState({
-      ModalText: 'The modal will be closed after two seconds',
-      confirmLoading: true,
-    });
-    setTimeout(() => {
-      this.setState({
-        visible: false,
-        confirmLoading: false,
-      });
-    }, 2000);
+  handleOk = (value) => {
+    let _this =this;
+    // this.setState({
+    //   ModalText: 'The modal will be closed after two seconds',
+    //   confirmLoading: true,
+    // });
+    // setTimeout(() => {
+    //   this.setState({
+    //     visible: false,
+    //     confirmLoading: false,
+    //   });
+    // }, 2000);
+    if(this.state.title === '登录'){
+      _this.props.userSigin(value);
+    }else{
+      _this.props.userRegirst(value);
+    }
+ 
+
   }
   handleCancel = () => { 
     this.setState({
@@ -53,7 +61,8 @@ export default class SignApp extends React.Component {
     });
   }
   render() {
-    const { visible,title, confirmLoading, ModalText } = this.state;
+    const { visible, title, confirmLoading, ModalText } = this.state;
+    console.log('valsssssssue', this.props);
     return (
       <span className='signIn-box' >
             <Button  className='sign' onClick={this.register.bind(this,'登录')}>
@@ -69,7 +78,7 @@ export default class SignApp extends React.Component {
               title={title}
               visible={visible}
               handleCancel={this.handleCancel}
-              submit={this.handleOk}
+              handleOk={this.handleOk}
               register={this.register}
             />
     

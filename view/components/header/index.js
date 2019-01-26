@@ -25,6 +25,8 @@ import logo from '../../assets/img/logo.png';
                 <div className="header-left">
                     <img src={logo}/>
                     <span>绿叶笔记</span>
+
+                    
                 </div>
                 <div className="header-right">
                   <Menu

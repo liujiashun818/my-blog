@@ -2,13 +2,13 @@ import { message, Modal, notification } from 'antd';
 import _ from 'underscore';
 
 // 保存正在进行中的ajax请求
-let requestArr = [];
+// let requestArr = [];
 
-const popCompleteRequest = url => {
-  requestArr = requestArr.filter(record => {
-    return String(record) !== String(url);
-  });
-};
+// const popCompleteRequest = url => {
+//   requestArr = requestArr.filter(record => {
+//     return String(record) !== String(url);
+//   });
+// };
 
 const errorTip = (requestName, errorContent = '请求错误') => {
   Modal.error({
@@ -30,12 +30,11 @@ export const dao = ({
   tip = true
 }) => {
   const copy_url = url;
-
   const params = {
-    userId: '1234',
+    // userId: '1234',
     // userId: window.gladder.userInfo.workid,
     // userName: window.gladder.userInfo.name,
-    userName: 'tom'
+    // userName: 'tom'
   };
 
   data = { ...data, ...params };
@@ -44,13 +43,13 @@ export const dao = ({
     url = copy_url;
     data = {
       ...data,
-      userId: window.gladder.userInfo.workid,
-      userName: window.gladder.userInfo.name
+      // userId: window.gladder.userInfo.workid,
+      // userName: window.gladder.userInfo.name
     };
   }
 
   // 当请求已经在进行中时，不会在发请求
-  if (requestArr.includes(url)) return false;
+  // if (requestArr.includes(url)) return false;
 
   let hide = null;
 
@@ -73,7 +72,7 @@ export const dao = ({
       withCredentials: true
     },
     complete: (XMLHttpRequest, status) => {
-      popCompleteRequest(url);
+      // popCompleteRequest(url);
       if (status === 'timeout') {
         promise.abort(); // 超时后中断请求
         errorTip(requestTitle, '请求超时');
@@ -82,7 +81,7 @@ export const dao = ({
       }
     }
   });
-  requestArr.push(url);
+  // requestArr.push(url);
   promise
     .done(response => {
       if (typeof response === 'string') {
@@ -117,7 +116,7 @@ export const dao = ({
         hide();
         window.messageLoading = window.messageLoading.filter(record => record !== hide);
       }
-      popCompleteRequest(url);
+      // popCompleteRequest(url);
     });
 };
 
