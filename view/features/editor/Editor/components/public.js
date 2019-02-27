@@ -16,14 +16,14 @@ class Public extends Component {
         }
     }
     submitPublic(e){
-        console.log('e',e);
-        this.changePublic();
+        this.props.savePublicInfo(e);
+        // this.changePublic();
     }
     changePublic(e){
         this.setState({activeKey:e})
     }
     render(){
-        const{activeKey} = this.state;
+        const{activeKey} = this.state; // todo 通过判断是否保存成功再是否关闭
         return(
                 <Collapse
                   ref={(publicDom) => this.publicDom = publicDom}

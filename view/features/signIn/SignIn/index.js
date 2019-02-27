@@ -26,8 +26,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       daoServerOfParamsObjOfPost({url:signInUrl, dispatch:dispatchCopy, action:siginAction,route:'',queryCallback, data:useInfo})
     },
     userRegirst: (useInfo) => {
-      daoServerOfParamsObjOfPost({url:regirstUrl, dispatch:dispatchCopy, action:siginAction,route:'',queryCallback, data:useInfo})
-    }
+      daoServerOfParamsObjOfPost({url:regirstUrl, dispatch:dispatchCopy, action:regirstAction,route:'',queryCallback, data:useInfo})
+    },
+    signOut: () => {
+      dispatch(siginAction([]));
+    },
   }
 }
 const SignIn = connect(
