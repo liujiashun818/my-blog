@@ -1,44 +1,51 @@
 
 import React from 'react';
-import { connect } from  'react-redux';
-import { queryResult } from './actions.js';
+import { connect } from 'react-redux';
 import reduxConfig from './store.js';
-import daoServer from '../../common/daoServe.js';
-import { queryUrl } from '../../interface.js';
+import { saveArticleUrl } from '../../interface.js';
 import { obj2Arr } from '../../common/tool.js';
 import EditorApp from './app.js';
+import { daoServerOfParamsObjOfPost } from '../../common/daoServe';
+import { saveResultAction } from './actions';
 
 let dispatchCopy = null;
 let myState = null;
 
 const mapStateToProp = (state = {}, ownProps = {}) => {
-
   myState = state[reduxConfig.stateKey];
   return {
-      dataObj: myState,
-  }
-}
+    dataObj: myState,
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   dispatchCopy = dispatch;
   return {
-    query: (queryObj) => {
-      query(queryObj)
-    }
-  }
-}
+    saveArticle: (obj) => {
+      saveArticle(obj);
+    },
+  };
+};
 const Editor = connect(
   mapStateToProp,
-  mapDispatchToProps
-)(EditorApp)
+  mapDispatchToProps,
+)(EditorApp);
 export default Editor;
 
-const query = (requeryPrams) => {
-  let queryObj = obj2Arr(requeryPrams) || [];
-  const requestParams = queryObj.join('&') + '';
-  const url = queryUrl;
-  daoServer(url, dispatchCopy, queryResult, '', queryCallback)
-}
-const queryCallback = () => {
-  alert('我是callback ')
+const saveArticle = (obj) => {
+  // let queryObj = obj2Arr(requeryPrams) || [];
+  // const requestParams = queryObj.join('&') + '';
+
+  const url = saveArticleUrl;
+  daoServerOfParamsObjOfPost({
+    url,
+    dispatch: dispatchCopy,
+    action: saveResultAction,
+    route: '',
+    queryCallback,
+    data: obj,
+  });
+};
+const queryCallback = (e) => {
+  console.log('equeryCallback',e);
 }

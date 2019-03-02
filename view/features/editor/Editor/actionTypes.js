@@ -1,1 +1,1 @@
-export const QUERY = 'homeQuery';
+export const ARTICLESTATE = 'articleState';

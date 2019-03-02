@@ -176,7 +176,7 @@ export const daoServerOfParamsObjOfPost = ({
       dataObj,
       requestTitle,
       data,
-      requestType: 'post'
+      requestType: 'post',
     });
   } else {
     dao({
@@ -188,7 +188,7 @@ export const daoServerOfParamsObjOfPost = ({
       dataObj,
       requestTitle,
       data,
-      requestType: 'post'
+      requestType: 'post',
     });
   }
 };

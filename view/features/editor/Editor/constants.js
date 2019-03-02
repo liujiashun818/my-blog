@@ -1,1 +1,1 @@
-export const NAME = 'homePage'
+export const NAME = 'editor';

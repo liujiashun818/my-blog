@@ -7,7 +7,6 @@ import Editor from './components/editor';
 import Public from './components/public';
 import ReactMarkdown from 'react-markdown';
 import { ChangeEditor } from './components/changeEditor';
-import AvatarComponent from '../../../components/avatar';
 import { SignIn } from '../../signIn';
 import logo from '../../../assets/img/logo.png';
 import { initialSource } from '../../../untils/mock.js';
@@ -45,19 +44,19 @@ export default class EditorApp extends React.Component {
     const saveObj = {
       title,
       content: markdownSrc,
-      user: window.sessionStorage.getItem('user_id'), // todo 此处是ID
+      user: window.sessionStorage.getItem('user_id') || '', // todo 此处是ID
       category,
 
     };
-      console.log('saveObj', saveObj);
+    this.props.saveArticle(saveObj);
   }
 
   handleTitle = (e) => {
     this.setState({ title: e.target.value }); // todo 记得使用节流
-    console.log('title', e.target.value);
   }
 
   render() {
+      console.log('ddd',this.props);
     return (
       <Layout className="editor-box ">
         <Header className="editor-header">
@@ -99,3 +98,4 @@ export default class EditorApp extends React.Component {
     );
   }
 }
+
