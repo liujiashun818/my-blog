@@ -85,14 +85,14 @@ class PublicFrom extends Component {
           </Radio.Group>)}
         </Form.Item>
 
-        <Form.Item {...formItemLayout} label="标签">
-          {getFieldDecorator('maker', {
-                        rules: [{
-                        required: this.state.checkNick,
-                        message: '标签',
-                        }],
-                    })(<Input placeholder="请输入一个标签" />)}
-        </Form.Item>
+        {/*<Form.Item {...formItemLayout} label="标签">*/}
+          {/*{getFieldDecorator('maker', {*/}
+                        {/*rules: [{*/}
+                        {/*required: this.state.checkNick,*/}
+                        {/*message: '标签',*/}
+                        {/*}],*/}
+                    {/*})(<Input placeholder="请输入一个标签" />)}*/}
+        {/*</Form.Item>*/}
 
         <Form.Item
           wrapperCol={{ span: 12, offset: 6 }}

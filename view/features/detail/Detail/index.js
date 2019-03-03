@@ -22,8 +22,8 @@ const mapStateToProp = (state = {}, ownProps = {}) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   dispatchCopy = dispatch;
   return {
-    query: (queryObj) => {
-      query(queryObj)
+    getArticle: (queryObj) => {
+      getArticle(queryObj)
     }
   }
 }
@@ -33,9 +33,10 @@ const Detail = connect(
 )(app)
 export default Detail;
 
-const query = (requeryPrams) => {
-  let queryObj = obj2Arr(requeryPrams) || [];
-  const requestParams = queryObj.join('&') + '';
+const getArticle = (requeryPrams) => {
+  // let queryObj = obj2Arr(requeryPrams) || [];
+  // const requestParams = queryObj.join('&') + '';
+  // todo 详情
   const url = queryUrl;
   daoServer(url, dispatchCopy, queryResult, '', queryCallback)
 }

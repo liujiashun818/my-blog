@@ -1,1 +1,1 @@
-export { default as Detail } from './Detail/index.js';
+export { default as Detail } from './Detail';

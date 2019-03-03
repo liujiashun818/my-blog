@@ -1,12 +1,13 @@
-import {QUERY} from './actionTypes.js';
-const reducer = (state = {'queryHome': ''}, action = {}) => {
-  const myState = {...state};
-  switch (action.type)  {
-    case QUERY:
-    myState.queryHome = action.info;
-    return myState;
+import { GETARTICLE } from './actionTypes';
+
+const reducer = (state = { articleList: [] }, action = {}) => {
+  const myState = { ...state };
+  switch (action.type) {
+    case GETARTICLE:
+      myState.articleList = action.info;
+      return myState;
     default:
-    return state;
+      return state;
   }
-}
+};
 export default reducer;

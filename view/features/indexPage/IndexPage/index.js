@@ -1,13 +1,12 @@
 
 import React from 'react';
 import { connect } from  'react-redux';
-import { queryResult } from './actions.js';
+import { getArticleAction } from './actions.js';
 import reduxConfig from './store.js';
 import daoServer from '../../common/daoServe.js';
-import { queryUrl } from '../../interface.js';
 import { obj2Arr } from '../../common/tool.js';
 import app from './app.js';
-
+import { articleUrl } from '../../interface.js';
 let dispatchCopy = null;
 let myState = null;
 
@@ -22,8 +21,8 @@ const mapStateToProp = (state = {}, ownProps = {}) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   dispatchCopy = dispatch;
   return {
-    query: (queryObj) => {
-      query(queryObj)
+    getArticleArray: () => {
+      getArticleArray()
     }
   }
 }
@@ -33,12 +32,12 @@ const IndexPage = connect(
 )(app)
 export default IndexPage;
 
-const query = (requeryPrams) => {
-  let queryObj = obj2Arr(requeryPrams) || [];
-  const requestParams = queryObj.join('&') + '';
-  const url = queryUrl;
-  daoServer(url, dispatchCopy, queryResult, '', queryCallback)
+const getArticleArray = (requeryPrams) => {
+  // let queryObj = obj2Arr(requeryPrams) || [];
+  // const requestParams = queryObj.join('&') + '';
+  const url = articleUrl;
+  daoServer(url, dispatchCopy, getArticleAction, '', queryCallback)
 }
 const queryCallback = () => {
-  alert('我是callback ')
+  // alert('我是callback ')
 }

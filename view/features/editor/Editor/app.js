@@ -45,7 +45,7 @@ export default class EditorApp extends React.Component {
       title,
       content: markdownSrc,
       user: window.sessionStorage.getItem('user_id') || '', // todo 此处是ID
-      category,
+      // category,
 
     };
     this.props.saveArticle(saveObj);

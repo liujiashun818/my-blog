@@ -15,5 +15,7 @@ export const regirstUrl = ipHost + '/api/users/signup';
 // export const regirstUrl = 'localhost:7001' + '/api/users/signup';
 export const signInUrl = ipHost + '/api/users/signin';
 // export const signInUrl = 'localhost:7001' + '/api/users/signin';
-export const saveArticleUrl = ipHost + '/api/categories';
+// export const categoriesUrl = ipHost + '/api/categories'; //分类
+export const articleUrl = ipHost + '/api/articles'; // 文章
+
 

@@ -1,53 +1,72 @@
 import React from 'react';
-import { List, Avatar, Icon } from 'antd';
-import {Link} from 'react-router-dom';
-const listData = [];
+import { List, Icon } from 'antd';
+import { Link } from 'react-router-dom';
+
+import ReactMarkdown from 'react-markdown';
+import './list.less';
 
 export default class ListApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-    componentDidMount(){
-        for (let i = 0; i < 23; i++) {
-            listData.push({
-              href: 'h这是链接',
-              title: `我是标题 ${i}`,
-              avatar: '作者',
-              content: '内容首行。。。。内容首行内容首行内容首行内容首行内容首行内容首行内容首行。。。',
-            });
-          }
-    }
+    };
+  }
+
+  componentDidMount() {
+    this.props.getArticleArray();
+  }
 
 
-    render(){
-        const IconText = ({ type, text }) => (
-            <span>
-              <Icon type={type} style={{ marginRight: 8 }} />
-              {text}
-            </span>
-          );
-        return(
-            <List
-            itemLayout="vertical"
-            size="large"
-            pagination={{
+  render() {
+    const IconText = ({ type, text }) => (
+      <span>
+        <Icon type={type} style={{ marginRight: 8 }} />
+        {text}
+      </span>
+    );
+    const { articleList } = this.props.dataObj;
+    console.log('this.props.articleList', articleList);
+    return (
+      <List
+        className="index-page"
+        itemLayout="vertical"
+        size="large"
+        pagination={{
               onChange: (page) => {
                 console.log(page);
               },
-              pageSize: 3,
+              pageSize: articleList.pageSize,
             }}
-            dataSource={listData}
-            renderItem={item => (
-              <List.Item
-                key={item.title}
-                actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
-              >
-                <List.Item.Meta
-                  avatar={<Avatar src={item.avatar} />}
-                  title={<Link to={'./detail'} >{item.title}</Link>}
-                />
-                {item.content}
-              </List.Item>
+        dataSource={articleList.items}
+        renderItem={item => (
+          <List.Item
+            key={item.title}
+            actions={[
+              <IconText type="eye" text={item.pv} />,
+              <IconText type="like-o" text={item.pv} />,
+              <IconText type="message" text={item.comments.length} />,
+                ]}
+          >
+            <List.Item.Meta
+              title={<Link
+                target="_blank"
+                to={{
+                    pathname: './detail',
+                    search: `?id=${item._id}`,
+                 }}
+                replace
+              >{item.title}
+              </Link>}
+            />
+            <ReactMarkdown
+              className="result"
+              source={item.content.substring(0, 300)}
+            />
+
+          </List.Item>
             )}
-          />
-        )
-    }
+      />
+    );
+  }
 }

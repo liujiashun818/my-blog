@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import reduxConfig from './store.js';
-import { saveArticleUrl } from '../../interface.js';
+import { articleUrl } from '../../interface.js';
 import { obj2Arr } from '../../common/tool.js';
 import EditorApp from './app.js';
 import { daoServerOfParamsObjOfPost } from '../../common/daoServe';
@@ -36,7 +36,7 @@ const saveArticle = (obj) => {
   // let queryObj = obj2Arr(requeryPrams) || [];
   // const requestParams = queryObj.join('&') + '';
 
-  const url = saveArticleUrl;
+  const url = articleUrl;
   daoServerOfParamsObjOfPost({
     url,
     dispatch: dispatchCopy,

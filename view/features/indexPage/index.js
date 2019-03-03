@@ -1,1 +1,1 @@
-export { default as IndexPage } from './IndexPage/index.js';
+export { default as IndexPage } from './IndexPage';
