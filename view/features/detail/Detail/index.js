@@ -1,12 +1,12 @@
 
 import React from 'react';
 import { connect } from  'react-redux';
-import { queryResult } from './actions.js';
+import { detailAction } from './actions.js';
 import reduxConfig from './store.js';
 import daoServer from '../../common/daoServe.js';
-import { queryUrl } from '../../interface.js';
-import { obj2Arr } from '../../common/tool.js';
+import { detailUrl } from '../../interface.js';
 import app from './app.js';
+import { obj2Arr } from '../../common/tool.js';
 
 let dispatchCopy = null;
 let myState = null;
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   dispatchCopy = dispatch;
   return {
     getArticle: (queryObj) => {
-      getArticle(queryObj)
+      getArticle(queryObj);
     }
   }
 }
@@ -34,12 +34,9 @@ const Detail = connect(
 export default Detail;
 
 const getArticle = (requeryPrams) => {
-  // let queryObj = obj2Arr(requeryPrams) || [];
-  // const requestParams = queryObj.join('&') + '';
-  // todo 详情
-  const url = queryUrl;
-  daoServer(url, dispatchCopy, queryResult, '', queryCallback)
+  const url = detailUrl + ('/' + requeryPrams.id);
+  daoServer(url, dispatchCopy, detailAction, '', queryCallback);
 }
 const queryCallback = () => {
-  alert('我是callback ')
+  // alert('我是callback ')
 }

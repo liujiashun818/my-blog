@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Icon, Card, Layout, Avatar } from 'antd';
-import { initialSource } from '../../../untils/mock.js';
+import { Icon, Card, Layout, List } from 'antd';
 
 import HeaderComponent from '../../../components/header/index.js';
 import Topic from './topic/Topic';
@@ -26,28 +25,46 @@ export default class DetailApp extends Component {
     };
   }
   componentDidMount() {
-    console.log('获取ID：',this.props);
-    let urlParam = this.props.location.search;
-    var id = urlParam.split("=")[1];
-    this.props.getArticle({id:id});
+    const urlParam = this.props.location.search;
+    const id = urlParam.split('=')[1];
+    this.props.getArticle({ id });
   }
 
-    render() {
-    console.log(this.props,'详情')；
+  render() {
+    console.log('详情', this.props);
+    const dataObj = this.props.dataObj;
+    const {
+      content = '', createAt = '', title = '', pv = 0, _v = 0,comments = []
+    } = dataObj.detail || {};
+    const IconText = ({ type, text }) => (
+        <span style={{ marginRight: 20 }} >
+        <Icon type={type} style={{ marginRight: 8 }}/>
+          {text}
+      </span>
+    );
     return (
       <Layout className="layout index-page detail">
         <HeaderComponent />
         <Content>
           <div className="content-box">
             <Card hoverable className="content-common content-main">
-              <Meta
-                avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                title="空荡荡的多多多"
-              />
-              <ReactMarkdown
-                className="result"
-                source={initialSource}
-              />
+              <List.Item>
+               <List.Item.Meta
+                    title={title}
+                    description={[
+                      <IconText type="eye" text={pv} />,
+                      <IconText type="like-o" text={_v} />,
+                      <IconText type="message" text={comments.length} />,
+                      <span>{createAt}</span>,
+                      <span style={{ float: 'right'}}><a>编辑</a></span>
+                    ]}
+                />
+                <ReactMarkdown
+                    className="result"
+                    source={content}
+                />
+
+              </List.Item>
             </Card >
             <div className="content-right">
               <BaseInfo />

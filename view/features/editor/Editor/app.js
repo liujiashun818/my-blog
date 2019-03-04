@@ -10,7 +10,7 @@ import { ChangeEditor } from './components/changeEditor';
 import { SignIn } from '../../signIn';
 import logo from '../../../assets/img/logo.png';
 import { initialSource } from '../../../untils/mock.js';
-
+import moment from 'moment';
 const { Header, Content, Footer } = Layout;
 const menu = (
   <Menu>
@@ -45,6 +45,8 @@ export default class EditorApp extends React.Component {
       title,
       content: markdownSrc,
       user: window.sessionStorage.getItem('user_id') || '', // todo 此处是ID
+      createAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+
       // category,
 
     };
