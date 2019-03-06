@@ -48,7 +48,7 @@ export default class DetailApp extends Component {
         <Content>
           <div className="content-box">
             <Card hoverable className="content-common content-main">
-              <List.Item>
+              <List.Item style={{display:'block'}}>
                <List.Item.Meta
                     title={title}
                     description={[
@@ -61,6 +61,7 @@ export default class DetailApp extends Component {
                 />
                 <ReactMarkdown
                     className="result"
+                    style={{height:100%}}
                     source={content}
                 />
 
