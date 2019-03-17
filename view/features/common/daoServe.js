@@ -39,7 +39,7 @@ export const dao = ({
 
   data = { ...data, ...params };
 
-  if (requestType === 'post') {
+  if (requestType === 'post' || 'put') {
     url = copy_url;
     data = {
       ...data,
@@ -191,6 +191,59 @@ export const daoServerOfParamsObjOfPost = ({
       requestType: 'post',
     });
   }
+};
+
+/**
+ * put 更新
+ *
+ */
+
+export const daoServerOfParamsObjOfPut = ({
+                                             url,
+                                             dispatch,
+                                             action,
+                                             data = {},
+                                             route = '',
+                                             callback = '',
+                                             dataObj = '',
+                                             debounceFlag = true,
+                                             requestTitle
+                                           }) => {
+    debounceFunc({
+      url,
+      dispatch,
+      action,
+      route,
+      callback,
+      dataObj,
+      requestTitle,
+      data,
+      requestType: 'put',
+    });
+};
+
+export const daoServerOfParamsObjOfDelete = ({
+                                            url,
+                                            dispatch,
+                                            action,
+                                            data = {},
+                                            route = '',
+                                            callback = '',
+                                            dataObj = '',
+                                            debounceFlag = true,
+                                            requestTitle
+                                          }) => {
+  debounceFunc({
+    url,
+    dispatch,
+    action,
+    route,
+    callback,
+    dataObj,
+    requestTitle,
+    data,
+    requestType: 'delete',
+  });
 };
 
 export default daoServer;

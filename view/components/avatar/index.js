@@ -11,7 +11,6 @@ export default class AvatarComponent extends React.Component {
     };
   }
     handleMenuClick = (e) => {
-      console.log(e);
       if (e.key === '1') {
         window.sessionStorage.removeItem('user_id');
         this.props.signOut();

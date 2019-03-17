@@ -34,7 +34,7 @@ export default class DetailApp extends Component {
     console.log('详情', this.props);
     const dataObj = this.props.dataObj;
     const {
-      content = '', createAt = '', title = '', pv = 0, _v = 0,comments = []
+      content = '', createAt = '', title = '', pv = 0, _v = 0,comments = [],_id
     } = dataObj.detail || {};
     const IconText = ({ type, text }) => (
         <span style={{ marginRight: 20 }} >
@@ -44,34 +44,39 @@ export default class DetailApp extends Component {
     );
     return (
       <Layout className="layout index-page detail">
-        <HeaderComponent />
+        <HeaderComponent key='deatil'/>
         <Content>
           <div className="content-box">
             <Card hoverable className="content-common content-main">
               <List.Item style={{display:'block'}}>
                <List.Item.Meta
+                    key='33'
                     title={title}
                     description={[
-                      <IconText type="eye" text={pv} />,
-                      <IconText type="like-o" text={_v} />,
-                      <IconText type="message" text={comments.length} />,
+                      <IconText key ='eye' type="eye" text={pv} />,
+                      <IconText key ='like-o'  type="like-o" text={_v} />,
+                      <IconText key ='message'  type="message" text={comments.length} />,
                       <span>{createAt}</span>,
-                      <span style={{ float: 'right'}}><a>编辑</a></span>
+                      <span style={{ float: 'right'}}>
+                          <Link to={{
+                              pathname: './editor',
+                              search: `?id=${_id}`,
+                          }} replace>编辑</Link>
+                      </span>
                     ]}
                 />
                 <ReactMarkdown
                     className="result"
-                    style={{height:100%}}
+                    style={{height:'100%'}}
                     source={content}
                 />
 
               </List.Item>
             </Card >
             <div className="content-right">
-              <BaseInfo />
-              <BaseInfo />
-              <BaseInfo />
-
+              <BaseInfo key='1'/>
+              <BaseInfo key='2'/>
+              <BaseInfo key='3'/>
             </div>
           </div>
         </Content>

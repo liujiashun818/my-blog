@@ -69,7 +69,7 @@ export default class SignApp extends React.Component {
     return (
       <span className="signIn-box" >
         {
-          (user_id !== 'undefined')
+          (!!user_id && user_id !=='undefined')
               ? <AvatarComponent signOut={signOut} />
               : <span>
                   <Button className="sign" onClick={this.register.bind(this, '登录')}>

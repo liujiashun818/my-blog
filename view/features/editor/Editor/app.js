@@ -20,6 +20,7 @@ const menu = (
   </Menu>
 );
 export default class EditorApp extends React.Component {
+
   constructor(props) {
     super(props);
     this.handleMarkdownChange = this.handleMarkdownChange.bind(this);
@@ -28,29 +29,71 @@ export default class EditorApp extends React.Component {
       htmlMode: 'raw',
       isShowRich: false,
       title: '',
+      content: ''
     };
   }
 
-  handleMarkdownChange(evt) {
-    this.setState({ markdownSrc: evt.target.value });
+  componentDidMount() {
+    const urlParam = this.props.location.search;
+    // if(){
+    //
+    // }
+    if(!!urlParam){
+      const id = urlParam.split('=')[1];
+      this.props.getArticle({ id });
+    }
+
   }
+  componentWillReceiveProps(nextProps) {
+    const { detail } = nextProps.dataObj || {};
+    let { content = '', title = '标题1'} = detail;
+    // if(){
+
+      this.setState({title: title,content: content})
+    // }
+  }
+
+  handleMarkdownChange(evt) {
+
+    this.setState({ content: evt.target.value });
+  }
+
   changeEditorFun() {
     console.log('是否切换富文本编辑器');
     this.setState({ isShowRich: !this.state.isShowRich });
   }
+
   savePublicInfo = (e) => {
-    const category = e.classify;
-    const { markdownSrc, title } = this.state;
+    let category = e.classify || '';
+    const { title , content} = this.state;
+    const  user = window.sessionStorage.getItem('user_id');
+    if(!!!title){
+      return message.warning('请输入标题');
+    }
+    if(!!!content){
+      return message.warning('请输入内容');
+    }
+
+    if(!!!user){
+      return message.warning('请登陆');
+    }
     const saveObj = {
       title,
-      content: markdownSrc,
-      user: window.sessionStorage.getItem('user_id') || '', // todo 此处是ID
+      content: content,
+      user: user, // todo 此处是ID
       createAt: moment().format("YYYY-MM-DD HH:mm:ss"),
-
-      // category,
-
+      category,
     };
-    this.props.saveArticle(saveObj);
+    const urlParam = this.props.location.search;
+
+    if(!!urlParam){
+      const id = urlParam.split('=')[1];
+      const obj = {id:id};
+      Object.assign(obj,saveObj);
+      this.props.editArticle(obj);
+    }else {
+      this.props.saveArticle(saveObj);
+    }
   }
 
   handleTitle = (e) => {
@@ -59,12 +102,16 @@ export default class EditorApp extends React.Component {
 
   render() {
       console.log('ddd',this.props);
+      // const { markdownSrc } = this.state;
+      // const { detail } = this.props.dataObj;
+    let { content, title } = this.state;
+
     return (
       <Layout className="editor-box ">
         <Header className="editor-header">
           <div className="header-left">
             <div className="log"><Link to="./"><img src={logo} /><span>绿叶笔记</span></Link></div>
-            <Input className="title" size="large" placeholder="请输入文章标题..." onChange={this.handleTitle} />
+            <Input className="title" size="large" value = { title } placeholder="请输入文章标题..." onChange={this.handleTitle} />
           </div>
           <div className="header-right">
             <div className="h-r-c auto-save">自动保存到&nbsp; <Button>草稿</Button></div>
@@ -85,13 +132,13 @@ export default class EditorApp extends React.Component {
         </Header >
         <Content className="editor-middle">
           <Card className="editor-left" hoverable>
-            <Editor value={this.state.markdownSrc} onChange={this.handleMarkdownChange} />
+            <Editor value={ content } onChange={this.handleMarkdownChange} />
           </Card>
 
           <Card className="editor-right" hoverable>
             <ReactMarkdown
               className="result"
-              source={this.state.markdownSrc}
+              source={ content }
             />
           </Card>
         </Content>

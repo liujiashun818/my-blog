@@ -1,8 +1,9 @@
 import React from 'react';
-import { List, Icon } from 'antd';
+import { List, Icon, Modal } from 'antd';
 import { Link } from 'react-router-dom';
 
 import ReactMarkdown from 'react-markdown';
+const confirm = Modal.confirm;
 import './list.less';
 
 export default class ListApp extends React.Component {
@@ -11,22 +12,52 @@ export default class ListApp extends React.Component {
     this.state = {
 
     };
+    this.handleItem = this.handleItem.bind(this);
   }
 
   componentDidMount() {
     this.props.getArticleArray();
   }
 
+  handleItem(type, infoObj) {
+      console.log('infoObj', infoObj);
+      const _this = this;
+      if(type === 'delete'){
+         confirm({
+             title: `你确定要删除这条数据吗？`,
+             content: `标题：${infoObj.title}`,
+             okText: 'Yes',
+             okType: 'danger',
+             okButtonProps: {
+                 disabled: false,
+             },
+             cancelText: 'No',
+             onOk() {
+                 console.log('OK');
+                 console.log('_this.props',_this.props);
+                 _this.props.deleteArticle(infoObj.id)
+             },
+             onCancel() {
+                 console.log('Cancel');
+             },
+         });
+     }else{
+         message.info(type)
+     }
+
+  }
 
   render() {
-    const IconText = ({ type, text }) => (
+      const { deleteArticle } = this.props;
+
+    const IconText = ({ type, text, infoObj}) => (
       <span>
-        <Icon type={type} style={{ marginRight: 8 }} />
+        <Icon type={type} style={{ marginRight: 8 }} onClick={this.handleItem.bind(this,type, infoObj)} />
         {text}
       </span>
     );
     const { articleList } = this.props.dataObj;
-    console.log('this.props.articleList', articleList);
+
     return (
       <List
         className="index-page"
@@ -42,10 +73,12 @@ export default class ListApp extends React.Component {
         renderItem={item => (
           <List.Item
             key={item.title}
+
             actions={[
-              <IconText type="eye" text={item.pv} />,
-              <IconText type="like-o" text={item.pv} />,
-              <IconText type="message" text={item.comments.length} />,
+              <IconText type="eye" text={item.pv} infoObj={{id:item._id,title: item.title}} />,
+              <IconText type="like-o" text={item.pv} infoObj={{id:item._id,title: item.title}} />,
+              <IconText type="message" text={item.comments.length} infoObj={{id:item._id,title: item.title}} />,
+              <IconText type="delete" text='删除' infoObj={{id:item._id,title: item.title}} />,
                 ]}
           >
             <List.Item.Meta

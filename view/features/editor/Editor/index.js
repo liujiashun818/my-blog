@@ -2,11 +2,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import reduxConfig from './store.js';
-import { articleUrl } from '../../interface.js';
-import { obj2Arr } from '../../common/tool.js';
 import EditorApp from './app.js';
-import { daoServerOfParamsObjOfPost } from '../../common/daoServe';
-import { saveResultAction } from './actions';
+import { daoServerOfParamsObjOfPost,daoServerOfParamsObjOfPut } from '../../common/daoServe';
+import { saveResultAction, putResultAction } from './actions';
+import {detailUrl,articleUrl} from "../../interface";
+import daoServer from "../../common/daoServe";
+import {detailAction} from "../../detail/Detail/actions";
+// import {detailAction} from "../../detail/Detail/actions";
 
 let dispatchCopy = null;
 let myState = null;
@@ -24,6 +26,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     saveArticle: (obj) => {
       saveArticle(obj);
     },
+    editArticle: (obj) => {
+      editArticle(obj);
+    },
+    getArticle: (id) => {
+      getArticle(id);
+    }
   };
 };
 const Editor = connect(
@@ -32,10 +40,29 @@ const Editor = connect(
 )(EditorApp);
 export default Editor;
 
-const saveArticle = (obj) => {
-  // let queryObj = obj2Arr(requeryPrams) || [];
-  // const requestParams = queryObj.join('&') + '';
+/**
+ * @getArticle 获取编辑的内容；
+ *
+ */
 
+const getArticle = (requeryPrams) => {
+  const url = detailUrl + ('/' + requeryPrams.id);
+  daoServer(url, dispatchCopy, detailAction, '', queryCallback);
+}
+
+const editArticle = (obj) => {
+  const url = articleUrl + `/${obj.id}`;
+  daoServerOfParamsObjOfPut({
+    url,
+    dispatch: dispatchCopy,
+    action: putResultAction,
+    route: '',
+    queryCallback,
+    data: obj,
+  });
+};
+
+const saveArticle = (obj) => {
   const url = articleUrl;
   daoServerOfParamsObjOfPost({
     url,
@@ -46,6 +73,7 @@ const saveArticle = (obj) => {
     data: obj,
   });
 };
+
 const queryCallback = (e) => {
-  console.log('equeryCallback',e);
+  // console.log('equeryCallback',e);
 }

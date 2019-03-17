@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from  'react-redux';
 import { getArticleAction } from './actions.js';
 import reduxConfig from './store.js';
-import daoServer from '../../common/daoServe.js';
+import {daoServer, daoServerOfParamsObjOfDelete} from '../../common/daoServe.js';
 import { obj2Arr } from '../../common/tool.js';
 import app from './app.js';
 import { articleUrl } from '../../interface.js';
@@ -23,6 +23,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getArticleArray: () => {
       getArticleArray()
+    },
+    deleteArticle: (id) => {
+      deleteArticle(id);
     }
   }
 }
@@ -38,6 +41,14 @@ const getArticleArray = (requeryPrams) => {
   const url = articleUrl;
   daoServer(url, dispatchCopy, getArticleAction, '', queryCallback)
 }
+
+const deleteArticle = (id) => {
+  const url = articleUrl + `/${id}`;
+  alert('kkk');
+  // todo
+  daoServerOfParamsObjOfDelete(url, dispatchCopy, getArticleAction, '', queryCallback)
+}
+
 const queryCallback = () => {
   // alert('我是callback ')
 }

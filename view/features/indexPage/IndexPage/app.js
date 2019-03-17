@@ -15,7 +15,10 @@ export default class IndexPageApp extends React.Component {
       <div className="indexPage">
         <Tabs type="card">
           <TabPane tab="全部" key="1">
-            <ListApp {...this.props} getArticleArray={this.props.getArticleArray} />
+            <ListApp
+                {...this.props}
+                getArticleArray={this.props.getArticleArray}
+            />
           </TabPane>
           <TabPane tab="html" key="2">
             <p>html</p>

@@ -1,7 +1,13 @@
-import { ARTICLESTATE } from './actionTypes';
+import { DETAILACTION, PUTRESULTACTION } from './actionTypes';
 
-export const saveResultAction = value => ({
-  type: ARTICLESTATE,
+export const detailAction = value => ({
+  type: DETAILACTION,
   info: value,
 });
-export default { saveResultAction };
+
+export const putResultAction = value => ({
+  type: PUTRESULTACTION,
+  info: value,
+});
+
+export default { detailAction, putResultAction };

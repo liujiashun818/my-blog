@@ -1,1 +1,2 @@
-export const ARTICLESTATE = 'articleState';
+export const DETAILACTION = 'detail';
+export const PUTRESULTACTION = 'putResult';
