@@ -1,10 +1,9 @@
 
 import React from 'react';
 import { connect } from  'react-redux';
-import { getArticleAction } from './actions.js';
+import { getArticleAction, deleteArticleAction } from './actions.js';
 import reduxConfig from './store.js';
 import {daoServer, daoServerOfParamsObjOfDelete} from '../../common/daoServe.js';
-import { obj2Arr } from '../../common/tool.js';
 import app from './app.js';
 import { articleUrl } from '../../interface.js';
 let dispatchCopy = null;
@@ -36,19 +35,27 @@ const IndexPage = connect(
 export default IndexPage;
 
 const getArticleArray = (requeryPrams) => {
-  // let queryObj = obj2Arr(requeryPrams) || [];
-  // const requestParams = queryObj.join('&') + '';
   const url = articleUrl;
   daoServer(url, dispatchCopy, getArticleAction, '', queryCallback)
 }
 
 const deleteArticle = (id) => {
   const url = articleUrl + `/${id}`;
-  alert('kkk');
-  // todo
-  daoServerOfParamsObjOfDelete(url, dispatchCopy, getArticleAction, '', queryCallback)
+  daoServerOfParamsObjOfDelete({
+    url,
+    dispatch: dispatchCopy,
+    action: deleteArticleAction,
+    route: '',
+    queryCallback:queryCallback,
+  })
+  function queryCallback() {
+    alert('llll')
+  }
 }
 
-const queryCallback = () => {
-  // alert('我是callback ')
+const queryCallback = (e,b,v) => {
+  // console.log('e',e);
+  console.log('b',b);
+  console.log('v',v);
+
 }

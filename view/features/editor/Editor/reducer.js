@@ -1,7 +1,7 @@
 
-import { DETAILACTION, PUTRESULTACTION } from './actionTypes';
+import { DETAILACTION, PUTRESULTACTION, SAVERESULTACTION } from './actionTypes';
 
-const reducer = (state = { detail: '', putResult: '' }, action = {}) => {
+const reducer = (state = { detail: '', putResult: '' , save : ''}, action = {}) => {
   const myState = { ...state };
   switch (action.type) {
     case DETAILACTION:
@@ -9,6 +9,8 @@ const reducer = (state = { detail: '', putResult: '' }, action = {}) => {
       return myState;
     case PUTRESULTACTION:
       myState.putResult = action.info;
+    case SAVERESULTACTION:
+      myState.save = action.info;
     default:
       return state;
   }

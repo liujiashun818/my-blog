@@ -226,12 +226,12 @@ export const daoServerOfParamsObjOfDelete = ({
                                             url,
                                             dispatch,
                                             action,
-                                            data = {},
                                             route = '',
                                             callback = '',
                                             dataObj = '',
                                             debounceFlag = true,
-                                            requestTitle
+                                            requestTitle,
+                                               data = {},
                                           }) => {
   debounceFunc({
     url,

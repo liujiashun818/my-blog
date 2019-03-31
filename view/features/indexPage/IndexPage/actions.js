@@ -1,7 +1,12 @@
-import { GETARTICLE } from './actionTypes';
+import { GETARTICLE, DELETEARTICLE } from './actionTypes';
 
 export const getArticleAction = value => ({
   type: GETARTICLE,
   info: value,
 });
-export default { getArticleAction };
+export const deleteArticleAction = value =>({
+  type: DELETEARTICLE,
+  info: value,
+});
+
+export default { getArticleAction, deleteArticleAction };

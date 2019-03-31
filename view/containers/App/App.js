@@ -63,9 +63,9 @@ import HeaderComponent from '../../components/header/index.js';
                
             </div> 
             <div className='content-right'> 
-              <BaseInfo />
-              <BaseInfo />
-              <BaseInfo />
+              <BaseInfo title='日历'/>
+              <BaseInfo title='日历2'/>
+              <BaseInfo title='日历3'/>
             
             </div>
            </div>

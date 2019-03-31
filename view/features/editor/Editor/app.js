@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Layout, Menu, Collapse, Avatar, Badge, Card, Input, Button, Dropdown, Icon } from 'antd';
+import { Layout, Menu, message, Avatar, Badge, Card, Input, Button, Dropdown, Icon } from 'antd';
 import { Link } from 'react-router-dom';
 import './app.less';
 import Editor from './components/editor';

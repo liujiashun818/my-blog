@@ -1,4 +1,4 @@
-import { DETAILACTION, PUTRESULTACTION } from './actionTypes';
+import { DETAILACTION, PUTRESULTACTION,SAVERESULTACTION } from './actionTypes';
 
 export const detailAction = value => ({
   type: DETAILACTION,
@@ -9,5 +9,8 @@ export const putResultAction = value => ({
   type: PUTRESULTACTION,
   info: value,
 });
-
-export default { detailAction, putResultAction };
+export const saveResultAction = value => ({
+  type: SAVERESULTACTION,
+  info: value,
+});
+export default { detailAction, putResultAction, SAVERESULTACTION };

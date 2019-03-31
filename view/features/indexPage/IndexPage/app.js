@@ -10,7 +10,9 @@ export default class IndexPageApp extends React.Component {
   componentDidMount() {
 
   }
+
   render() {
+
     return (
       <div className="indexPage">
         <Tabs type="card">
