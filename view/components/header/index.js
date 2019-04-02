@@ -39,7 +39,7 @@ import logo from '../../assets/img/logo.png';
                     <Menu.Item key="1">
                       <Link to='/'><Icon type="home" />首页</Link>
                     </Menu.Item>
-                    <Menu.Item key="2">
+                    <Menu.Item key="2" >
                       <Link to='/news'><Icon type="codepen-circle" />动态</Link>
                     </Menu.Item>
                     <Menu.Item key="3">

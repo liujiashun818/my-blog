@@ -7,6 +7,7 @@ import './app.less';
 
 const TabPane = Tabs.TabPane;
 export default class IndexPageApp extends React.Component {
+
   componentDidMount() {
 
   }
@@ -24,7 +25,6 @@ export default class IndexPageApp extends React.Component {
           </TabPane>
           <TabPane tab="html" key="2">
             <p>html</p>
-
           </TabPane>
           <TabPane tab="css" key="3">
             <p>css</p>
