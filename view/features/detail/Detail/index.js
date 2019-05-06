@@ -34,7 +34,8 @@ const Detail = connect(
 export default Detail;
 
 const getArticle = (requeryPrams) => {
-  const url = detailUrl + ('/' + requeryPrams.id);
+   let id = requeryPrams.id;
+  const url = detailUrl +  `/${id}`;
   daoServer(url, dispatchCopy, detailAction, '', queryCallback);
 }
 const queryCallback = () => {
